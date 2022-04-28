@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmy.demo.mapper.ContractMapper" >
+  <resultMap id="BaseResultMap" type="com.zmy.demo.pojo.Contract" >
+    <id column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="cnum" property="cnum" jdbcType="VARCHAR" />
+    <result column="chid" property="chid" jdbcType="INTEGER" />
+    <result column="clid" property="clid" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="cstartTime" property="cstarttime" jdbcType="TIMESTAMP" />
+    <result column="cendTime" property="cendtime" jdbcType="TIMESTAMP" />
+    <result column="ctotalMoney" property="ctotalmoney" jdbcType="INTEGER" />
+    <result column="cpayType" property="cpaytype" jdbcType="INTEGER" />
+  </resultMap>
+
+</mapper>

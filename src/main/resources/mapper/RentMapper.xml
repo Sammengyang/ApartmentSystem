@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmy.demo.mapper.RentMapper" >
+  <resultMap id="BaseResultMap" type="com.zmy.demo.pojo.Rent" >
+    <id column="rid" property="rid" jdbcType="INTEGER" />
+    <result column="rhid" property="rhid" jdbcType="INTEGER" />
+    <result column="rlid" property="rlid" jdbcType="INTEGER" />
+    <result column="rprice" property="rprice" jdbcType="DOUBLE" />
+    <result column="rpayTime" property="rpaytime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+</mapper>

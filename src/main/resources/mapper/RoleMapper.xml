@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmy.demo.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.zmy.demo.pojo.Role" >
+    <id column="roid" property="roid" jdbcType="INTEGER" />
+    <result column="roname" property="roname" jdbcType="VARCHAR" />
+    <result column="rodesc" property="rodesc" jdbcType="VARCHAR" />
+    <result column="roaddTime" property="roaddtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="getUserRoleByUname" resultMap="BaseResultMap">
+    SELECT * from user_role ur,role r WHERE ur.roid=r.roid AND ur.uid=#{uid}
+  </select>
+
+</mapper>

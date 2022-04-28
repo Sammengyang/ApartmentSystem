@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmy.demo.mapper.HouseMapper" >
+  <resultMap id="BaseResultMap" type="com.zmy.demo.pojo.House" >
+    <id column="hid" property="hid" jdbcType="INTEGER" />
+    <result column="haddress" property="haddress" jdbcType="VARCHAR" />
+    <result column="hdistrict" property="hdistrict" jdbcType="VARCHAR" />
+    <result column="hno" property="hno" jdbcType="INTEGER" />
+    <result column="hfloor" property="hfloor" jdbcType="VARCHAR" />
+    <result column="hroomNum" property="hroomnum" jdbcType="INTEGER" />
+    <result column="harea" property="harea" jdbcType="VARCHAR" />
+    <result column="hdir" property="hdir" jdbcType="VARCHAR" />
+    <result column="hfurniture" property="hfurniture" jdbcType="VARCHAR" />
+    <result column="hdeco" property="hdeco" jdbcType="INTEGER" />
+    <result column="hair" property="hair" jdbcType="INTEGER" />
+    <result column="hpersonNum" property="hpersonnum" jdbcType="INTEGER" />
+    <result column="hprice" property="hprice" jdbcType="DOUBLE" />
+    <result column="hrentStatus" property="hrentstatus" jdbcType="INTEGER" />
+    <result column="himage" property="himage" jdbcType="VARCHAR" />
+    <result column="hfullAddress" property="hfulladdress" jdbcType="VARCHAR" />
+    <result column="haddTime" property="haddtime" jdbcType="TIMESTAMP" />
+    <result column="hupdateTime" property="hupdatetime" jdbcType="TIMESTAMP" />
+    <result column="hstatus" property="hstatus" jdbcType="INTEGER" />
+  </resultMap>
+
+</mapper>
