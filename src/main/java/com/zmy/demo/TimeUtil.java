@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class TimeUtil {
 
-    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      *  解析日期模板 yyyy-MM-dd

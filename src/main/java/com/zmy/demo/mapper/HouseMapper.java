@@ -1,16 +1,24 @@
 package com.zmy.demo.mapper;
 
 import com.zmy.demo.pojo.House;
+import org.apache.ibatis.annotations.Param;
+import tk.mybatis.mapper.common.Mapper;
+
 import java.util.List;
 
-public interface HouseMapper {
-    int deleteByPrimaryKey(Integer hid);
+@org.apache.ibatis.annotations.Mapper
+public interface HouseMapper extends Mapper<House> {
+    /**
+     * 条件查询
+     * @param serch
+     * @return
+     */
+    List<House> serchHouseByparam(@Param("serch") String serch);
 
-    int insert(House record);
-
-    House selectByPrimaryKey(Integer hid);
-
-    List<House> selectAll();
-
-    int updateByPrimaryKey(House record);
+    /**
+     * 添加房源信息
+     * @param keys
+     * @param values
+     */
+    int addHouse(@Param("key") String keys, @Param("value") String values);
 }

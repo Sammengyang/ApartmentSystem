@@ -2,7 +2,6 @@ package com.zmy.demo.controller;
 
 import com.zmy.demo.TimeUtil;
 import com.zmy.demo.pojo.Message;
-import com.zmy.demo.pojo.Role;
 import com.zmy.demo.pojo.User;
 import com.zmy.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +65,13 @@ public class UserController {
     public Message logout(HttpSession session){
         System.out.println("session ==================== " + session);
         session.invalidate();
+        return Message.success();
+    }
+
+    @GetMapping("/user")
+    @ResponseBody
+    public Message getUserList(){
+
         return Message.success();
     }
 

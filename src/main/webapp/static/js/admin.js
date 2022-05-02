@@ -1,4 +1,11 @@
 $(function (){
+    // 导航栏
+    $("#house_jsp").click(function (){
+        $("#iframeBox").attr("src","/tohouse");
+    });
+
+
+
     // 获取登录人信息
     getEnrollerInfo();
     // 退出
@@ -27,8 +34,8 @@ function getEnrollerInfo(){
         }
     })
 }
+// 退出
 function logout(){
-    alert("asss");
     $.ajax({
         url: "/logout",
         type: "get",

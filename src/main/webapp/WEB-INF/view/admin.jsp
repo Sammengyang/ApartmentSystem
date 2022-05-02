@@ -54,7 +54,7 @@
                             <!-- The user image in the navbar-->
                             <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="用户图像">
                             <!-- hidden-xs 在小型设备上隐藏用户名，只显示图像。 -->
-                            <span class="hidden-xs">${param.uname}</span>
+                            <span class="hidden-xs" style="font-size: 20px">${param.uname}</span>
                         </a>
                         <!-- 点击头像的菜单 -->
                         <ul class="dropdown-menu">
@@ -98,39 +98,81 @@
                     <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="用户图像">
                 </div>
                 <div class="pull-left info">
-                    <p id="uname">${param.uname}</p>
+                    <p id="uname" style="font-size: 20px">${param.uname}</p>
                     <!-- 状态 -->
                     <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
                 </div>
             </div>
 
             <!---------- 侧边栏搜索框 --------->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="搜索...">
-                    <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
-                                    class="fa fa-search"></i>
-                            </button>
-                        </span>
-                </div>
-            </form>
+<%--            <form action="#" method="get" class="sidebar-form">--%>
+<%--                <div class="input-group">--%>
+<%--                    <input type="text" name="q" class="form-control" placeholder="搜索...">--%>
+<%--                    <span class="input-group-btn">--%>
+<%--                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i--%>
+<%--                                    class="fa fa-search"></i>--%>
+<%--                            </button>--%>
+<%--                        </span>--%>
+<%--                </div>--%>
+<%--            </form>--%>
 
             <!------------- 侧边栏菜单 ------------->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">主导航</li>
                 <!--------- 导航链接 ----------->
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>链接</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>另一个链接</span></a></li>
+<%--                <li class="active"><a href="#"><i class="glyphicon glyphicon-lock"></i> <span>订单管理</span></a></li>--%>
+<%--                <li><a href="#"><i class="fa fa-link"></i> <span>另一个链接</span></a></li>--%>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>多级菜单</span>
+                    <a href="#"><i class="glyphicon glyphicon-lock"></i> <span>商品管理</span>
                         <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/WEB-INF/view/index.jsp">2级链接</a></li>
-                        <li><a href="#">2级链接</a></li>
+                        <li><a href="#" id="house_jsp">房源管理</a></li>
+                        <li><a href="#">分类参数</a></li>
+                        <li><a href="#">商品分类</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span>订单管理</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/WEB-INF/view/index.jsp">订单列表</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="glyphicon glyphicon-user"></i> <span>用户管理</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/userlist" id="userlist">用户列表</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="glyphicon glyphicon-edit"></i> <span>权限管理</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/WEB-INF/view/index.jsp">角色列表</a></li>
+                        <li><a href="/userlist">权限列表</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="glyphicon glyphicon-object-align-bottom"></i> <span>数据统计</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/WEB-INF/view/index.jsp">数据报表</a></li>
                     </ul>
                 </li>
             </ul>
@@ -139,52 +181,9 @@
 
     <!------------------------------------- 页面主体内容 -------------------------------------->
     <div class="content-wrapper">
-        <!------- 头部 (页眉) ------->
-        <section class="content-header">
-            <h1>
-                首页
-                <small>欢迎您</small>
-            </h1>
-            <!-- 面包屑 -->
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> home</a></li>
-                <li class="active">样例</li>
-            </ol>
-        </section>
-
-        <!------ 主体内容 ------>
-        <section class="content container-fluid">
-            <!-- 面板样例 -->
-            <div class="box box-primary">
-                <!-- 面板头部 -->
-                <div class="box-header with-border">
-                    <i class="fa fa-cube"></i>
-                    <h3 class="box-title">面板样例</h3>
-                </div>
-                <!-- 面板内容 -->
-                <div class="box-body">
-                    <h1>这是一个AdminLTE模板！</h1>
-                    <h3>任何你想要的</h3>
-
-                </div>
-
-
-            </div>
-            <!-- /.box-body -->
-
-        </section>
+        <iframe id="iframeBox" style="width: 100%;height: 100%;border: 0px" src="/static/image/welcome.png">
+        </iframe>
     </div>
-
-    <!------- 尾部Footer ------>
-    <footer class="main-footer">
-        <!-- 右测内容 -->
-        <div class="pull-right hidden-xs">
-            任何你想要的
-        </div>
-        <!-- 默认左侧内容 -->
-        <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
-    </footer>
-
     <!------------------------------------右侧设置按钮的侧边栏 ------------------------------------>
     <aside class="control-sidebar control-sidebar-dark" style="display: none;">
         <!-- Create the tabs -->

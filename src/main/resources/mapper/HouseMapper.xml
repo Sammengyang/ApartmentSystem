@@ -23,4 +23,23 @@
     <result column="hstatus" property="hstatus" jdbcType="INTEGER" />
   </resultMap>
 
+<!--   OR hprice<#{serch}-->
+  <select id="serchHouseByparam" resultMap="BaseResultMap">
+    SELECT * from house
+    WHERE hid=#{serch}
+    OR haddress LIKE '%${serch}%'
+    OR hdistrict LIKE '%${serch}%'
+    OR harea=#{serch}
+    OR hfullAddress LIKE '%${serch}%'
+    OR hrentStatus LIKE '%${serch}%'
+    OR hdeco LIKE '%${serch}%'
+  </select>
+
+
+
+
+
+
+
+
 </mapper>

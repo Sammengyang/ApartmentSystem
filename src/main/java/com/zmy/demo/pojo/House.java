@@ -41,6 +41,34 @@ public class House {
 
     private Integer hstatus;
 
+
+    public House(Integer hid, String haddress, String hdistrict, Integer hno, String hfloor, Integer hroomnum, String harea, String hdir, String hfurniture, Integer hdeco, Integer hair, Integer hpersonnum, Double hprice, Integer hrentstatus, String himage, String hfulladdress, Date haddtime, Date hupdatetime, Integer hstatus) {
+        this.hid = hid;
+        this.haddress = haddress;
+        this.hdistrict = hdistrict;
+        this.hno = hno;
+        this.hfloor = hfloor;
+        this.hroomnum = hroomnum;
+        this.harea = harea;
+        this.hdir = hdir;
+        this.hfurniture = hfurniture;
+        this.hdeco = hdeco;
+        this.hair = hair;
+        this.hpersonnum = hpersonnum;
+        this.hprice = hprice;
+        this.hrentstatus = hrentstatus;
+        this.himage = himage;
+        this.hfulladdress = hfulladdress;
+        this.haddtime = haddtime;
+        this.hupdatetime = hupdatetime;
+        this.hstatus = hstatus;
+    }
+
+    public House(){
+
+    }
+
+
     public Integer getHid() {
         return hid;
     }
@@ -191,5 +219,30 @@ public class House {
 
     public void setHstatus(Integer hstatus) {
         this.hstatus = hstatus;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "hid=" + hid +
+                ", haddress='" + haddress + '\'' +
+                ", hdistrict='" + hdistrict + '\'' +
+                ", hno=" + hno +
+                ", hfloor='" + hfloor + '\'' +
+                ", hroomnum=" + hroomnum +
+                ", harea='" + harea + '\'' +
+                ", hdir='" + hdir + '\'' +
+                ", hfurniture='" + hfurniture + '\'' +
+                ", hdeco=" + hdeco +
+                ", hair=" + hair +
+                ", hpersonnum=" + hpersonnum +
+                ", hprice=" + hprice +
+                ", hrentstatus=" + hrentstatus +
+                ", himage='" + himage + '\'' +
+                ", hfulladdress='" + hfulladdress + '\'' +
+                ", haddtime=" + haddtime +
+                ", hupdatetime=" + hupdatetime +
+                ", hstatus=" + hstatus +
+                '}';
     }
 }
