@@ -66,11 +66,9 @@ public class HouseServiceImpl implements HouseService {
      */
     @Override
     public int updateHouse(House house) {
-        Example example = new Example(House.class);
         Date time = Date.from(Instant.now());
         house.setHupdatetime(time);
-        example.createCriteria().andEqualTo("hid",house.getHid());
-        return houseMapper.updateByExampleSelective(house,example);
+        return houseMapper.updateByPrimaryKeySelective(house);
     }
 
     /**

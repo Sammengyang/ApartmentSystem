@@ -163,14 +163,13 @@ public class HouseController {
     /**
      * 上传图片
      * @param file
-     * @param model
      * @param session
      * @return
      * @throws IOException
      */
     @RequestMapping("/house/upload/image")
     @ResponseBody
-    public Message UploadImage(@RequestParam("himage") MultipartFile file, Model model, HttpSession session) throws IOException {
+    public Message UploadImage(@RequestParam("himage") MultipartFile file, HttpSession session) throws IOException {
         if (file.isEmpty()){
             System.out.println("文件为空");
         }else {
@@ -215,16 +214,22 @@ public class HouseController {
     /**
      * 修改房源
      * @param hid
-     * @param house
+     * @param file
+     * @param request
      * @return
      */
-    @PutMapping("/house/{hid}")
+    @PostMapping("/house/{hid}")
     @ResponseBody
-    public Message updateHouseInfo(@PathVariable("hid")Integer hid,House house){
+    public Message updateHouseInfo(@PathVariable("hid")Integer hid,@RequestParam("file")MultipartFile file,HttpServletRequest request){
+        // 上传文件，返回文件最终路径
+        String imagePath = upload(file, request.getSession());
+        String houseInfo = request.getParameter("house");
+        // 解析 houseInfo
+        House house = parseHouseInfo(houseInfo, imagePath);
         house.setHid(hid);
         int num = houseService.updateHouse(house);
         if (num==1){
-            return Message.success();
+            return Message.success().add("house",house);
         }
         return Message.fail();
     }

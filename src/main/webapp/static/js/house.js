@@ -32,9 +32,12 @@ function build_house(list){
     $.each(houses,function (index,item){
         var housediv = $("<div></div>").addClass("house_one").appendTo($("#houseInfo"));
         // 解析图片
-        var houseimg = $("<div></div>")
-            .addClass("col-md-2 house_img")
-            .append($("<img>").attr("src","\\photo\\"+item.himage).addClass("imgs").css("width","100%"));
+        var houseimg = $("<div></div>").addClass("col-md-2 house_img")
+        if (item.himage=="" || item.himage==null){
+            houseimg.append($("<img>").attr("src","\\static\\image\\default.png").addClass("imgs").css("width","100%").attr("id","img"+item.hid));
+        }else {
+            houseimg.append($("<img>").attr("src","\\photo\\"+item.himage).addClass("imgs").css("width","100%").attr("id","img"+item.hid));
+        }
         housediv.append(houseimg);
         // $("<img>").attr("src","").addClass("img-rounded").appendTo(houseimg);
         // // 解析信息
@@ -120,13 +123,12 @@ $("#house_add_modal_btn").click(function (){
         backdrop:"static"
     });
 });
-//***********************************
+// 提交添加
 $("#house_add_btn").click(function (){
-    // var form = new FormData(document.getElementById("add_house_form"));
     var fromdata = new FormData();
     // 添加选取的文件
     fromdata.append("file",$("#house_image")[0].files[0]);
-    // fromdata.append("file",document.getElementById("house_image").files[0]);
+    alert(fromdata.get("file").size);
     // 把form表单序列化  转化为json key值为 equipmentTypeForm
     fromdata.append('house',JSON.stringify($('#add_house_form').serialize()));
     // 检测表格数据
@@ -186,7 +188,7 @@ function check_add_form(){
     if (check_count==12){
         $("#house_add_btn").attr("check_btn","success");
         var photo = document.getElementById("house_image").files[0];
-        var photo = $("#house_image").files[0];
+        var photo = $("#house_image")[0].files[0];
         if (typeof (photo)=="undefined" ){//|| photo.size()<=0
             alert("请选上传图片");
             $("#house_add_btn").attr("check_btn","error");
@@ -208,7 +210,6 @@ function show_input(ele,status){
         $(ele).parent().addClass("has-error");
     }
 }
-
 // 修改房源信息
 // 修改房源信息
 $(document).on("click",".house_edit_btn",function (){
@@ -248,21 +249,41 @@ function show_houseInfo_modal(result){
     $("#hprice_edit_input").val(house.hprice);
     $("#hrentStatus_edit_input").val([house.hrentstatus]);
     $("#hfullAddress_edit_input").val(house.hfulladdress);
-
+    if (house.himage=="" || house.himage ==null){
+        $("#edit_image").attr("src","\\static\\image\\default.png");
+    }else{
+        $("#edit_image").attr("src","\\photo\\"+house.himage);
+    }
 }
 // 保存修改
 $("#house_edit_btn").click(function (){
-    // 序列化form表单
-    var house = $("#edit_house_form").serialize();
+    var data = new FormData();
+    // 添加选取的文件
+    alert($("#house_edit_img").attr("name"));
+    data.append("file",$("#house_edit_img")[0].files[0]);
+    alert(data.get("file").size);
+    // 把form表单序列化  转化为json数据
+    data.append("house",JSON.stringify($("#edit_house_form").serialize()));
+    // 发送 put请求
+    var hid = $(this).attr("houseid");
     // 发送ajax请求更新house信息
     $.ajax({
-        url:"/house/"+$(this).attr("houseid"),
+        url:"/house/"+hid,
         type:"POST",
-        data:house+"&_method=PUT",
+        data:data,
+        cache: false,
+        async:false,
+        processData: false,
+        contentType: false,
         success:function (result){
             // 关闭模态框
             $("#house_edit_modal").modal("hide");
-            alert(result.msg);
+            if (result.code==100){
+                var ele = "#img"+hid;
+                $(ele).attr("src","\\photo\\"+result.extend.house.himage);
+            }else {
+                alert(result.msg);
+            }
         }
     });
 });

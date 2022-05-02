@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Sam
@@ -281,8 +282,8 @@
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">房屋图片</label>
                             <div class="col-sm-10">
-                                <img src="">
-                                <input type="file" name="himage" placeholder="">
+                                <img src="/static/image/default.png" id="edit_image" style="width: 100%">
+                                <input type="file" name="editfile" id="house_edit_img">
                             </div>
                         </div>
                     </form>

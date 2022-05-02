@@ -1,8 +1,12 @@
 package com.zmy.demo.pojo;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 public class House {
+    @Id
+    @GeneratedValue(generator = "JDBC")
     private Integer hid;
 
     private String haddress;
